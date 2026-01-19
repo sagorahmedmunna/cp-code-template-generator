@@ -1,0 +1,75 @@
+% Competitive Programming Notebook
+%
+% IMPORTANT: This document requires -shell-escape flag to build.
+% DO NOT run: pdflatex main.tex
+% Instead, use one of these:
+%   - make
+%   - ./build.sh
+%   - latexmk main.tex
+%   - pdflatex -shell-escape main.tex (run twice)
+%
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[landscape,top=1.6cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tocloft}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{tasks}
+\usepackage{tikz}
+\usepackage{newunicodechar}
+\newunicodechar{√}{$\sqrt{\phantom{x}}$} \newunicodechar{∑}{$\sum$}
+\newunicodechar{⋅}{$\cdot$} % dot operator (multiplication)
+\newunicodechar{≡}{$\equiv$} % equivalent to
+\newunicodechar{≠}{$\neq$} % not equal to
+
+\settasks{label=\arabic*.}
+\settasks{after-item-skip=1pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{sagorahmedmunna}
+\fancyhead[R]{Page \thepage{} of {\pageref{LastPage}}}
+\setlength{\columnseprule}{0.4pt}
+\setlength{\headsep}{10pt}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforesecskip}{2pt}
+\hypersetup{pdfborder={0 0 0}}
+
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{1em}{}[\vspace{0pt}\hrule\vspace{0pt}]
+\titlespacing{\section}{0pt}{5pt}{5pt}
+
+\usemintedstyle{perldoc}
+\setminted{breaklines=true, breakanywhere=true, tabsize=2, fontsize=\small, baselinestretch=0.8, samepage=false}
+
+\begin{document}
+
+	\begin{center}
+		{\LARGE\textbf{CP Template}}\\[8pt]
+		{\large Prepared By: sagorahmedmunna}\\
+	\end{center}
+
+	\begin{multicols*}{3}
+
+	\tableofcontents
+	\newpage
+
+	% Auto-generated sections from codes folder
+	% Run: python3 generate_sections.py to regenerate
+	\input{sections.tex}
+
+	% Mathematical formulas and notes
+	\input{math_formulas.tex}
+
+
+	\end{multicols*}
+
+\end{document}
