@@ -17,7 +17,9 @@ This single command will:
 - ✅ Organize all output files in the `build_output/` folder
 - ✅ Create the final PDF
 
-The PDF will be available at `build_output/main.pdf`
+The PDF will be available at `build_output/main.pdf`.
+
+For the front page, go to the `frontpage/` folder, compile `main.tex`, and see the `frontpage/README.md` for details.
 
 
 

@@ -1,0 +1,186 @@
+% ======================================================================
+% ICPC CP NOTEBOOK FRONT PAGE TEMPLATE
+% ----------------------------------------------------------------------
+% HOW TO USE:
+% 1. Put your university logo file (e.g. University_logo.png) in this folder.
+% 2. Set the logo file name in \universityLogo below.
+% 3. Change the team / institute / supervisor info in the CONFIG SECTION.
+% 4. Compile with: pdflatex main.tex   (run twice for best results).
+%
+% To reuse for other teams, just edit the values in the CONFIG SECTION.
+% ======================================================================
+
+\documentclass[a4paper,landscape,12pt]{article}
+
+% -------------------------- PACKAGES ----------------------------------
+\usepackage[margin=1.0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,shadows}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{lmodern}  % nicer default font
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Force Computer Modern Roman for the left info card (team/members/supervisor)
+\newcommand{\leftInfoFont}{\rmfamily\fontfamily{cmr}\selectfont}
+
+% -------------------------- COLOR PALETTE -----------------------------
+% You can tweak these to match your university / team colors
+\definecolor{primary}{HTML}{1F6FEB}   % blue
+\definecolor{accent}{HTML}{F78166}    % orange
+\definecolor{dark}{HTML}{0D1117}      % near black
+\definecolor{muted}{HTML}{6E7681}     % gray
+\definecolor{lightbg}{HTML}{F5F7FB}   % very light background
+
+% -------------------------- CONFIG SECTION ----------------------------
+% LOGO (file should be in same folder; supports .png/.pdf/.jpg)
+\newcommand{\universityLogo}{University_logo.png}
+
+% BASIC INFO (CHANGE THESE)
+\newcommand{\teamNumber}{ICPCSLG004}
+\newcommand{\teamName}{AfterShock}
+\newcommand{\instituteName}{East West University}
+\newcommand{\regionName}{ICPC ASIA WEST REGIONAL SRI LANKA CONTEST}
+\newcommand{\seasonName}{ICPC 2025--2026 Season}
+
+% TEAM MEMBERS
+\newcommand{\memberOneName}{Sagor Ahmed}
+\newcommand{\memberOneEmail}{sagorahmed.std.ewu@gmail.com}
+
+\newcommand{\memberTwoName}{Muhammad Tafsiruzzaman}
+\newcommand{\memberTwoEmail}{tafsiruzzaman.me@gmail.com}
+
+\newcommand{\memberThreeName}{Md.~Rakibul Islam}
+\newcommand{\memberThreeEmail}{m.rakibulislam.me@gmail.com}
+
+% SUPERVISOR
+\newcommand{\supervisorName}{Dr.~Taskeed Jabid}
+\newcommand{\supervisorTitle}{Team Coach / Supervisor}
+
+% ======================================================================
+\begin{document}
+
+% Full-page TikZ background
+\begin{tikzpicture}[remember picture,overlay]
+  % subtle top-right angular accent
+  \fill[primary!6] (current page.north east) --
+                   ($(current page.north east) + (-7,0)$) --
+                   ($(current page.north east) + (-2,-5)$) --
+                   (current page.north east) -- cycle;
+
+  % subtle bottom-left accent
+  \fill[accent!7] (current page.south west) --
+                  ($(current page.south west) + (7,0)$) --
+                  ($(current page.south west) + (2,5)$) --
+                  (current page.south west) -- cycle;
+
+  % thin primary border
+  \draw[primary!40, line width=0.7pt, rounded corners=8pt]
+    ($(current page.north west) + (0.6, -0.6)$) rectangle
+    ($(current page.south east) + (-0.6, 0.6)$);
+
+  % footer strip (overlay so it never pushes content to a new page)
+  \node[anchor=south, fill=primary!97!black, text=white, rounded corners=6pt,
+        inner xsep=0.8cm, inner ysep=0.35cm, minimum width=0.92\paperwidth]
+    at ($(current page.south) + (0,0.95cm)$) {%
+      \scriptsize \textbf{Prepared by \teamName}\hspace{0.8em}|\hspace{0.8em}%
+      \textcolor{lightbg}{Competitive Programming Notebook for ICPC-style Contests}%
+    };
+\end{tikzpicture}
+
+% -------------------------- MAIN CONTENT ------------------------------
+\vspace*{0.3cm}
+
+\noindent
+\begin{minipage}[t]{0.36\textwidth}
+  \centering
+  \includegraphics[width=0.55\linewidth,keepaspectratio]{\universityLogo}\par
+  \vspace{0.25cm}
+  {\Large\bfseries \textcolor{primary}{\instituteName}\par}
+  \vspace{0.1cm}
+  {\small\textcolor{muted}{Competitive Programming Notebook}\par}
+
+  \vspace{0.45cm}
+
+  \begin{tikzpicture}
+    \node[fill=white, rounded corners=10pt, draw=primary!30, line width=0.5pt,
+          inner xsep=0.65cm, inner ysep=0.45cm, drop shadow={
+            shadow xshift=0.6mm,
+            shadow yshift=-0.6mm,
+            opacity=0.15
+          }] {
+      \begin{minipage}{0.86\linewidth}
+        \leftInfoFont
+        \footnotesize
+        \setlength{\tabcolsep}{0pt}
+        \renewcommand{\arraystretch}{1.25}
+        \begin{tabular}{>{\bfseries}p{0.36\linewidth}p{0.60\linewidth}}
+          Team Name:   & \teamName \\
+          Team ID:     & \teamNumber \\
+        \end{tabular}
+        \vspace{0.25cm}
+
+        {\bfseries Members} \\[0.12cm]
+        \begingroup
+        \setlength{\tabcolsep}{0pt}
+        \renewcommand{\arraystretch}{1.1}
+        \begin{tabular}{>{\bfseries}p{0.08\linewidth}p{0.92\linewidth}}
+          1. & \memberOneName \\[-0.1cm]
+             & {\scriptsize\textcolor{muted}{\url{\memberOneEmail}}} \\[0.18cm]
+          2. & \memberTwoName \\[-0.1cm]
+             & {\scriptsize\textcolor{muted}{\url{\memberTwoEmail}}} \\[0.18cm]
+          3. & \memberThreeName \\[-0.1cm]
+             & {\scriptsize\textcolor{muted}{\url{\memberThreeEmail}}} \\
+        \end{tabular}
+        \endgroup
+
+        \vspace{0.25cm}
+        {\bfseries Supervisor} \\[0.12cm]
+        \begin{tabular}{>{\bfseries}p{0.20\linewidth}p{0.76\linewidth}}
+          Name: & \supervisorName \\
+          Role: & \supervisorTitle \\
+        \end{tabular}
+      \end{minipage}
+    };
+  \end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.60\textwidth}
+  \raggedleft
+  \vspace*{0.2cm}
+  {\LARGE\bfseries\textcolor{primary}{INTERNATIONAL COLLEGIATE}\\[-0.05cm]
+   \LARGE\bfseries\textcolor{primary}{PROGRAMMING CONTEST (ICPC)}\par}
+  \vspace{0.45cm}
+
+  {\Huge\bfseries\textcolor{dark}{TEAM}\par}
+  {\Huge\bfseries\textcolor{dark}{NOTEBOOK}\par}
+  \vspace{0.4cm}
+
+  {\LARGE\bfseries\textcolor{accent}{\teamName}\par}
+  \vspace{0.2cm}
+  {\large\textcolor{muted}{\regionName}\par}
+  \vspace{0.1cm}
+  {\large\textcolor{muted}{\seasonName}\par}
+  \vspace{0.3cm}
+
+  \begin{tikzpicture}
+    \node[fill=lightbg, rounded corners=10pt, draw=primary!15, line width=0.5pt,
+          inner xsep=0.9cm, inner ysep=0.6cm]{
+      \begin{minipage}{0.82\linewidth}
+        \small
+        \textcolor{muted}{This notebook contains templates, notes, and problem-solving references for ICPC-style contests.}\par
+      \end{minipage}
+    };
+  \end{tikzpicture}
+\end{minipage}
+\end{document}
+
